@@ -1,0 +1,44 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Ellen Wondra-Lindley
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+  %body{"ng-app"=>"personal", :class=>"controller_custom_content action_custom_content_page locale_en home"}
+
+    .siteOuterWrapper
+      .siteInnerWrapper
+        #siteHeader{class: "clearfix", role: "banner"}
+          %header
+            %nav.nav-banner{role: "navigation"}
+              .container
+                %ul.nav.nav-links
+                  %li
+                    %a{href: "/"}Home
+
+    #noticeContainer
+      .alert.alert-info{role: "alert", "ng-show"=> "notice_show"}
+        %button.close{type: "button", "data-dismiss"=>"alert", "aria-label"=>"close"}
+          %span{"aria-hidden"=>"true"} X
+        {{notice}}
+      .alert.alert-danger{role: "alert", "ng-show"=> "alert_show"}
+        %button.close{type: "button", "data-dismiss"=>"alert", "aria-label"=>"close"}
+          %span{"aria-hidden"=>"true"} X
+        {{alert}}
+
+    .siteContentWrapper{role: "main"}
+      .socrata-component.component-Container.notRendered.socrata-container#content
+        = yield
+      %br
+      %br
+
+    %footer
+      #footerLinks{role: "footer"}
+        %nav.navbar
+          .container-fluid
+            %ul.nav.navbar-nav
+              %li
+                %a{href: "/"} Home
